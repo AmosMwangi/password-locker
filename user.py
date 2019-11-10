@@ -20,3 +20,9 @@ class User:
         saves users into user_list
         '''
         User.user_list.append(self)
+    
+    def delete_user(self):
+        '''
+        delete's a saved user from user_list
+        '''
+        User.user_list.remove(self)
