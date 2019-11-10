@@ -35,3 +35,14 @@ class User:
         for user in cls.user_list:
             if user.first_name == first_name:
                 return user
+    
+    @classmethod
+    def user_exist(cls, first_name):
+        '''
+        checks if a contact exists
+        '''
+        for user in cls.user_list:
+            if user.first_name == first_name:
+                return True
+        else:
+            return False
