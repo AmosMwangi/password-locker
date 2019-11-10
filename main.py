@@ -20,3 +20,8 @@ def save_users(user):
     user.save_user()
 
 # delete contact
+def del_user(user):
+    '''
+    delete a contact
+    '''
+    user.delete_user()
