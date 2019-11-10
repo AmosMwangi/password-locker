@@ -32,3 +32,10 @@ def find_user(first_name):
     find user using first name
     '''
     return User.find_by_first_name(first_name)
+
+# if user exists
+def check_existing_users(first_name):
+    '''
+    return a boolean if user exist
+    '''
+    return User.user_exist(first_name)
