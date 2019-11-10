@@ -39,3 +39,11 @@ def check_existing_users(first_name):
     return a boolean if user exist
     '''
     return User.user_exist(first_name)
+
+# display all contacts
+def display_users():
+    '''
+    display all users
+    '''
+    return User.display_users()
+
