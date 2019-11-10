@@ -39,10 +39,17 @@ class User:
     @classmethod
     def user_exist(cls, first_name):
         '''
-        checks if a contact exists
+        checks if a user exists
         '''
         for user in cls.user_list:
             if user.first_name == first_name:
                 return True
         else:
             return False
+        
+    @classmethod
+    def display_users(cls):
+        '''
+        return user list
+        '''
+        return cls.user_list
