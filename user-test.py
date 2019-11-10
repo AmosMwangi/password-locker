@@ -42,5 +42,9 @@ class TestUser(unittest.TestCase):
     test for saving multi-users
     '''
 
-    
+    def test_save_multiple_user(self):
+        self.new_user.save_user()
+        test_user = User("Moringa", "School", "0712345678", "ms@mail.com", "password")
+        test_user.save_user()
+        self.assertEqual(len(User.user_list), 2)
 
