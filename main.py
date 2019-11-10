@@ -128,3 +128,19 @@ while True:
         else:
             print("😡 User does not exist!! 🤬 ")
             print("Access denied"*100000000)
+
+    # display user info
+    elif short_code == 'dc':
+        if display_users():
+            print("Here's a list a list of all users 😇")
+            print('\n')
+
+            for user in display_users():
+                print(
+                    f"{user.first_name} {user.last_name} {user.phone_number} {user.email} {user.password}")
+                print('\n')
+
+        else:
+            print('\n')
+            print("No users to display 😶")
+            print('\n')
