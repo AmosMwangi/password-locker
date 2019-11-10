@@ -98,11 +98,11 @@ class TestUser(unittest.TestCase):
     test 8 : copy using pyperclip
     '''
 
-    def test_copy_email(self):
-        self.new_user.save_user()
-        User.copy_email("0712345678")
+    # def test_copy_email(self):
+    #     self.new_user.save_user()
+    #     User.copy_email("0712345678")
 
-        self.assertEqual(self.new_user.email, pyperclip.paste())
+    #     self.assertEqual(self.new_user.email, pyperclip.paste())
 
 
 if __name__ == '__main__':
