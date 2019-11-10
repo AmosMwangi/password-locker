@@ -164,9 +164,14 @@ while True:
 
         else:
             print("User does not exist!! 🥵")
-            
+
     elif short_code == "ex":
         print(f"Bye, {f_name}. Have a lovely time 🤗  .")
         break
     else:
         print("Dude I really didn't get that. Please use the clear short code")
+
+
+if __name__ == '__main__':
+
+    main()
