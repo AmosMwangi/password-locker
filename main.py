@@ -25,3 +25,10 @@ def del_user(user):
     delete a contact
     '''
     user.delete_user()
+
+# find user
+def find_user(first_name):
+    '''
+    find user using first name
+    '''
+    return User.find_by_first_name(first_name)
