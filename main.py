@@ -94,11 +94,6 @@ while True:
         search_first_name = input()
         if check_existing_users(search_first_name):
             search_user = find_user(search_first_name)
-
-            print("Enter your first name")
-            search_first_name = input()
-            if check_existing_users(search_first_name):
-                search_user = find_user(search_first_name)
             while True:
                 print("Access granted")
                 print("First name:-  ")
@@ -169,7 +164,7 @@ while True:
         print(f"Bye, {f_name}. Have a lovely time 🤗  .")
         break
     else:
-        print("Dude I really didn't get that. Please use the clear short code")
+        print(f"Sorry {f_name} I really didn't get that request 😵. Please use the clear short code 🧐")
 
 
 if __name__ == '__main__':
