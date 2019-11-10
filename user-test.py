@@ -85,3 +85,10 @@ class TestUser(unittest.TestCase):
         user_exists = User.user_exist("Moringa")
         self.assertTrue(user_exists)
 
+# => 7
+    '''
+    test 7 : display list of all users saved
+    '''
+
+    def test_display_all_users(self):
+        self.assertEqual(User.display_users(), User.user_list)
