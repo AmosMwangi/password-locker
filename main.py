@@ -144,3 +144,24 @@ while True:
             print('\n')
             print("No users to display 😶")
             print('\n')
+
+        # find user
+    elif short_code == 'fc':
+        print("Spin search loaded \nEnter first name: ")
+
+        search_first_name = input()
+        if check_existing_users(search_first_name):
+            search_user = find_user(search_first_name)
+            print(f"{search_user.first_name} {search_user.last_name} ")
+
+            print('-' * 20)
+
+            print(f"Phone number...{search_user.phone_number}")
+
+            print(f"Email address...{search_user.email}")
+
+            print(f"Password....{search_user.password}")
+
+        else:
+            print("User does not exist!! 🥵")
+    
