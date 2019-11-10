@@ -47,3 +47,33 @@ def display_users():
     '''
     return User.display_users()
 
+################################################
+    # *MAIN FUNCTION* #
+################################################
+
+
+def main():
+    print("")
+print(" ###################################\n      🤖**PASSWORD LOCKER**🤖\n ###################################\n\nPlease signup to continue\n")
+
+print("Enter first name: ")
+f_name = input()
+
+print("Enter last name: ")
+l_name = input()
+
+print("Phone number: ")
+p_number = input()
+
+print("Email address: ")
+e_address = input()
+
+print("Enter password: ")
+u_password = input()
+
+# create and save new contact.
+save_users(create_user(f_name, l_name, p_number, e_address, u_password))
+
+print('\n')
+print(f"Hi {f_name} {l_name}. Sign up was successful.🥳    😉 ")
+print('\n')
