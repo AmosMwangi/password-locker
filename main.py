@@ -96,6 +96,7 @@ while True:
             search_user = find_user(search_first_name)
             while True:
                 print("Access granted")
+                print('-' * 20)
                 print("First name:-  ")
                 f_name = input()
 
