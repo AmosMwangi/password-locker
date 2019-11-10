@@ -77,3 +77,54 @@ save_users(create_user(f_name, l_name, p_number, e_address, u_password))
 print('\n')
 print(f"Hi {f_name} {l_name}. Sign up was successful.🥳    😉 ")
 print('\n')
+
+while True:
+    print(f"{f_name}, what would you like to do?")
+    print('\n')
+    print("Use these short codes : cc - create a new credential, dc - display credentials, fc - find a credential, ex - exit the user list ")
+
+    short_code = input().lower()
+
+    if short_code == 'cc':
+        print("Please login first")
+
+        print("\n")
+
+        print("Enter your first name")
+        search_first_name = input()
+        if check_existing_users(search_first_name):
+            search_user = find_user(search_first_name)
+
+            print("Enter your first name")
+            search_first_name = input()
+            if check_existing_users(search_first_name):
+                search_user = find_user(search_first_name)
+            while True:
+                print("Access granted")
+                print("First name:-  ")
+                f_name = input()
+
+                print("Last name:-  ")
+                l_name = input()
+
+                print("Phone number:-  ")
+                n_number = input()
+
+                print("Email address:- ")
+                e_address = input()
+
+                print("create password:- ")
+                p_password = input()
+
+                # create new user and save the user
+                save_users(create_user(f_name, l_name, n_number, e_address, p_password))
+
+                print('\n')
+                print(f"New user {f_name} {l_name} created")
+                print('\n')
+
+                break
+            
+        else:
+            print("😡 User does not exist!! 🤬 ")
+            print("Access denied"*100000000)
