@@ -163,5 +163,10 @@ while True:
             print(f"Password....{search_user.password}")
 
         else:
-            print("User does not exist!! 🥵"
-    
+            print("User does not exist!! 🥵")
+            
+    elif short_code == "ex":
+        print(f"Bye, {f_name}. Have a lovely time 🤗  .")
+        break
+    else:
+        print("Dude I really didn't get that. Please use the clear short code")
