@@ -1,4 +1,4 @@
-# Password Locker
+# Password Locker 	🔒
 
 #### {A cool place to store you credentials}, {10-11-2019}
 
