@@ -1,23 +1,41 @@
 #!/usr/bin/env python3.6
 
+import random
+
 from user import User
 
+from credential import Credential
+
 # creating a contact
-def create_user(fname, lname, phone, email, password):
+def create_user(fname, password):
     '''
     creating a new user
     '''
-    new_user = User(fname, lname, phone, email, password)
+    new_user = User(fname, password)
     return new_user
 
-# save contact
+# creating a credential
+def create_credential(fname, lname, phone, email, password):
+    '''
+    creating a new user
+    '''
+    new_credential = Credential(fname, lname, phone, email, password)
+    return new_credential
 
+# save contact
 
 def save_users(user):
     '''
     save new user
     '''
     user.save_user()
+
+# save credential
+def save_credentials(user):
+    '''
+    save new user
+    '''
+    user.save_credential()
 
 # delete contact
 def del_user(user):
@@ -26,12 +44,20 @@ def del_user(user):
     '''
     user.delete_user()
 
+# delete credential
+def del_user(user):
+    '''
+    delete a contact
+    '''
+    user.delete_user()
+
 # find user
-def find_user(first_name):
+def find_user(user_name):
     '''
-    find user using first name
+    find user using user name
     '''
-    return User.find_by_first_name(first_name)
+    return User.find_by_user_name(user_name)
+
 
 # if user exists
 def check_existing_users(first_name):
@@ -41,11 +67,19 @@ def check_existing_users(first_name):
     return User.user_exist(first_name)
 
 # display all contacts
-def display_users():
+def display_credentials():
     '''
     display all users
     '''
-    return User.display_users()
+    return Credential.display_credentials()
+
+# delete credential
+def del_credentials(password):
+    '''
+    function for deleting a credential
+    '''
+    found_credential = Credential.find_by_password(password)
+    Credential.delete_credential(found_credential)
 
 ################################################
     # *MAIN FUNCTION* #
@@ -56,32 +90,23 @@ def main():
     print("")
 print(" ###################################\n      🤖**PASSWORD LOCKER**🤖\n ###################################\n\nPlease signup to continue\n")
 
-print("Enter first name: ")
+print("Enter user name: ")
 f_name = input()
-
-print("Enter last name: ")
-l_name = input()
-
-print("Phone number: ")
-p_number = input()
-
-print("Email address: ")
-e_address = input()
 
 print("Enter password: ")
 u_password = input()
 
 # create and save new contact.
-save_users(create_user(f_name, l_name, p_number, e_address, u_password))
+save_users(create_user(f_name, u_password))
 
 print('\n')
-print(f"Hi {f_name} {l_name}. Sign up was successful.🥳    😉 ")
+print(f"Hi {f_name}. Sign up was successful.🥳   😉 ")
 print('\n')
 
 while True:
     print(f"{f_name}, what would you like to do?")
     print('\n')
-    print("Use these short codes : cc - create a new credential, dc - display credentials, fc - find a credential, ex - exit the user list ")
+    print("Use these short codes : cc - create a new credential, dc - display credentials, fc - find a credential, dc - delete credential ex - exit the user list ")
 
     short_code = input().lower()
 
@@ -90,76 +115,95 @@ while True:
 
         print("\n")
 
-        print("Enter your first name")
-        search_first_name = input()
-        if check_existing_users(search_first_name):
-            search_user = find_user(search_first_name)
+        print("Enter your user name")
+        search_user_name = input()
+        if check_existing_users(search_user_name):
+            search_user = find_user(search_user_name)
             while True:
+                print('-' * 14)
+                print('-' * 14)
                 print("Access granted")
-                print('-' * 20)
+                print('-' * 14)
+                print('-' * 14)
                 print("First name:-  ")
-                f_name = input()
+                fi_name = input()
 
                 print("Last name:-  ")
-                l_name = input()
+                li_name = input()
 
                 print("Phone number:-  ")
-                n_number = input()
+                ni_number = input()
 
                 print("Email address:- ")
-                e_address = input()
+                ei_address = input()
 
-                print("create password:- ")
-                p_password = input()
+                print("Select Y to create your own password")
+                response = input().lower()
+
+                if response == 'y':
+                    print('password ....')
+                    pi_password = input().lower()
+
+                else:
+                    x = []
+                    r = range(306, 399)
+                    for n in r:
+                        x.append(str(n))
+                    pi_password = (fi_name+li_name+random.choice(x))
+                    print(f"Your password is ...{pi_password}")
 
                 # create new user and save the user
-                save_users(create_user(f_name, l_name, n_number, e_address, p_password))
+                save_credentials(create_credential(fi_name, li_name, ni_number, ei_address, pi_password))
 
                 print('\n')
-                print(f"New user {f_name} {l_name} created")
+                print(f"New credential {fi_name} created")
                 print('\n')
 
                 break
             
         else:
-            print("😡 User does not exist!! 🤬 ")
+            print("😡 user does not exist!! 🤬 ")
             print("Access denied"*100000000)
 
     # display user info
     elif short_code == 'dc':
-        if display_users():
+        if display_credentials():
             print("Here's a list a list of all users 😇")
             print('\n')
 
-            for user in display_users():
+            for credential in display_credentials():
                 print(
-                    f"{user.first_name} {user.last_name} {user.phone_number} {user.email} {user.password}")
+                    f"{credential.first_name} {credential.last_name} {credential.phone_number} {credential.email} {credential.password}")
                 print('\n')
 
         else:
             print('\n')
-            print("No users to display 😶")
+            print("No credentials to display 😶")
             print('\n')
 
-        # find user
+        # find credential
     elif short_code == 'fc':
         print("Spin search loaded \nEnter first name: ")
 
         search_first_name = input()
         if check_existing_users(search_first_name):
-            search_user = find_user(search_first_name)
-            print(f"{search_user.first_name} {search_user.last_name} ")
+            search_credential = find_credential(search_first_name)
+            print(f"{search_credential.first_name} {search_credential.last_name} ")
 
             print('-' * 20)
 
-            print(f"Phone number...{search_user.phone_number}")
+            print(f"Phone number...{search_credential.phone_number}")
 
-            print(f"Email address...{search_user.email}")
+            print(f"Email address...{search_credential.email}")
 
-            print(f"Password....{search_user.password}")
+            print(f"Password....{search_credential.password}")
 
         else:
             print("User does not exist!! 🥵")
+        
+    elif short_code == 'dc':
+        print("First enter your password: ")
+        password = input()
 
     elif short_code == "ex":
         print(f"Bye, {f_name}. Have a lovely time 🤗  .")

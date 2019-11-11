@@ -12,13 +12,10 @@ class TestUser(unittest.TestCase):
     '''
 
     def setUp(self):
-        self.new_user = User("Moringa", "School", "0712345678", "ms@mail.com", "password")
+        self.new_user = User("Moringa", "password")
     
     def test_init(self):
-        self.assertEqual(self.new_user.first_name, "Moringa")
-        self.assertEqual(self.new_user.last_name, "School")
-        self.assertEqual(self.new_user.phone_number, "0712345678")
-        self.assertEqual(self.new_user.email, "ms@mail.com")
+        self.assertEqual(self.new_user.user_name, "Moringa")
         self.assertEqual(self.new_user.password, "password")
     
 # => 2
@@ -44,7 +41,7 @@ class TestUser(unittest.TestCase):
 
     def test_save_multiple_user(self):
         self.new_user.save_user()
-        test_user = User("Moringa", "School", "0712345678", "ms@mail.com", "password")
+        test_user = User("Moringa", "password")
         test_user.save_user()
         self.assertEqual(len(User.user_list), 2)
 
@@ -55,7 +52,7 @@ class TestUser(unittest.TestCase):
 
     def test_delete_user(self):
         self.new_user.save_user()
-        test_user = User("Moringa", "School", "0712345678", "ms@mail.com", "password")
+        test_user = User("Moringa", "password")
         test_user.save_user()
         self.new_user.delete_user()
         self.assertEqual(len(User.user_list), 1)
@@ -65,12 +62,12 @@ class TestUser(unittest.TestCase):
     test 5 : find user by first name and display info
     '''
 
-    def test_find_user_by_first_name(self):
+    def test_find_user_by_user_name(self):
         self.new_user.save_user()
-        test_user = User("Moringa", "School", "0712345678", "ms@mail.com", "password")
+        test_user = User("Moringa", "password")
         test_user.save_user()
-        found_user = User.find_by_first_name("Moringa")
-        self.assertEqual(found_user.email,test_user.email)
+        found_user = User.find_by_user_name("Moringa")
+        self.assertEqual(found_user.user_name,test_user.user_name)
 
 
 # => 6
@@ -80,7 +77,7 @@ class TestUser(unittest.TestCase):
 
     def test_user_exists(self):
         self.new_user.save_user()
-        test_user = User("Moringa", "School", "0712345678", "ms@mail.com", "password")
+        test_user = User("Moringa", "password")
         test_user.save_user()
         user_exists = User.user_exist("Moringa")
         self.assertTrue(user_exists)
