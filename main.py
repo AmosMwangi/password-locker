@@ -134,7 +134,10 @@ while True:
                 print("Phone number:-  ")
                 ni_number = input()
 
-                print("Email address:- ")
+                print("What type of social-media accoutnt's password would you like to create for:- ")
+                print('-' * 83)
+                print("    Facebook | Twtter | Snapchat | Linkedin | Email | Just a top secret folder")
+                print('-' * 83)
                 ei_address = input()
 
                 print("Select Y to create your own password")
